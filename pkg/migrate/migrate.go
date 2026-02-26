@@ -62,7 +62,7 @@ func Run(opts Options) (*Result, error) {
 		return nil, err
 	}
 
-	picoClawHome, err := resolvePonyClawHome(opts.PicoClawHome)
+	ponyClawHome, err := resolvePonyClawHome(opts.PicoClawHome)
 	if err != nil {
 		return nil, err
 	}
@@ -71,14 +71,14 @@ func Run(opts Options) (*Result, error) {
 		return nil, fmt.Errorf("OpenClaw installation not found at %s", openclawHome)
 	}
 
-	actions, warnings, err := Plan(opts, openclawHome, picoClawHome)
+	actions, warnings, err := Plan(opts, openclawHome, ponyClawHome)
 	if err != nil {
 		return nil, err
 	}
 
 	fmt.Println("Migrating from OpenClaw to PonyClaw")
 	fmt.Printf("  Source:      %s\n", openclawHome)
-	fmt.Printf("  Destination: %s\n", picoClawHome)
+	fmt.Printf("  Destination: %s\n", ponyClawHome)
 	fmt.Println()
 
 	if opts.DryRun {
@@ -95,12 +95,12 @@ func Run(opts Options) (*Result, error) {
 		fmt.Println()
 	}
 
-	result := Execute(actions, openclawHome, picoClawHome)
+	result := Execute(actions, openclawHome, ponyClawHome)
 	result.Warnings = warnings
 	return result, nil
 }
 
-func Plan(opts Options, openclawHome, picoClawHome string) ([]Action, []string, error) {
+func Plan(opts Options, openclawHome, ponyClawHome string) ([]Action, []string, error) {
 	var actions []Action
 	var warnings []string
 
@@ -117,7 +117,7 @@ func Plan(opts Options, openclawHome, picoClawHome string) ([]Action, []string, 
 			actions = append(actions, Action{
 				Type:        ActionConvertConfig,
 				Source:      configPath,
-				Destination: filepath.Join(picoClawHome, "config.json"),
+				Destination: filepath.Join(ponyClawHome, "config.json"),
 				Description: "convert OpenClaw config to PonyClaw format",
 			})
 
@@ -131,7 +131,7 @@ func Plan(opts Options, openclawHome, picoClawHome string) ([]Action, []string, 
 
 	if !opts.ConfigOnly {
 		srcWorkspace := resolveWorkspace(openclawHome)
-		dstWorkspace := resolveWorkspace(picoClawHome)
+		dstWorkspace := resolveWorkspace(ponyClawHome)
 
 		if _, err := os.Stat(srcWorkspace); err == nil {
 			wsActions, err := PlanWorkspaceMigration(srcWorkspace, dstWorkspace, force)
@@ -147,13 +147,13 @@ func Plan(opts Options, openclawHome, picoClawHome string) ([]Action, []string, 
 	return actions, warnings, nil
 }
 
-func Execute(actions []Action, openclawHome, picoClawHome string) *Result {
+func Execute(actions []Action, openclawHome, ponyClawHome string) *Result {
 	result := &Result{}
 
 	for _, action := range actions {
 		switch action.Type {
 		case ActionConvertConfig:
-			if err := executeConfigMigration(action.Source, action.Destination, picoClawHome); err != nil {
+			if err := executeConfigMigration(action.Source, action.Destination, ponyClawHome); err != nil {
 				result.Errors = append(result.Errors, fmt.Errorf("config migration: %w", err))
 				fmt.Printf("  ✗ Config migration failed: %v\n", err)
 			} else {
@@ -211,7 +211,7 @@ func Execute(actions []Action, openclawHome, picoClawHome string) *Result {
 	return result
 }
 
-func executeConfigMigration(srcConfigPath, dstConfigPath, picoClawHome string) error {
+func executeConfigMigration(srcConfigPath, dstConfigPath, ponyClawHome string) error {
 	data, err := LoadOpenClawConfig(srcConfigPath)
 	if err != nil {
 		return err
