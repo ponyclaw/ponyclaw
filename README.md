@@ -49,9 +49,9 @@ PonyClaw is a lightweight personal AI assistant built with Go, focusing on low r
     <th><p align="center">🔎 Web Search & Learning</p></th>
   </tr>
   <tr>
-    <td align="center"><p align="center"><img src="assets/picoclaw_code.gif" width="240" height="180"></p></td>
-    <td align="center"><p align="center"><img src="assets/picoclaw_memory.gif" width="240" height="180"></p></td>
-    <td align="center"><p align="center"><img src="assets/picoclaw_search.gif" width="240" height="180"></p></td>
+    <td align="center"><p align="center"><img src="assets/ponyclaw_code.gif" width="240" height="180"></p></td>
+    <td align="center"><p align="center"><img src="assets/ponyclaw_memory.gif" width="240" height="180"></p></td>
+    <td align="center"><p align="center"><img src="assets/ponyclaw_search.gif" width="240" height="180"></p></td>
   </tr>
   <tr>
     <td align="center">Develop • Deploy • Scale</td>

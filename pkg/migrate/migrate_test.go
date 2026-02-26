@@ -590,7 +590,7 @@ func TestRewriteWorkspacePath(t *testing.T) {
 
 func TestRunDryRun(t *testing.T) {
 	openclawHome := t.TempDir()
-	picoClawHome := t.TempDir()
+	ponyclawHome := t.TempDir()
 
 	wsDir := filepath.Join(openclawHome, "workspace")
 	os.MkdirAll(wsDir, 0o755)
@@ -610,7 +610,7 @@ func TestRunDryRun(t *testing.T) {
 	opts := Options{
 		DryRun:       true,
 		OpenClawHome: openclawHome,
-		PicoClawHome: picoClawHome,
+		PonyClawHome: ponyclawHome,
 	}
 
 	result, err := Run(opts)
@@ -618,11 +618,11 @@ func TestRunDryRun(t *testing.T) {
 		t.Fatalf("Run: %v", err)
 	}
 
-	picoWs := filepath.Join(picoClawHome, "workspace")
+	picoWs := filepath.Join(ponyclawHome, "workspace")
 	if _, err := os.Stat(filepath.Join(picoWs, "SOUL.md")); !os.IsNotExist(err) {
 		t.Error("dry run should not create files")
 	}
-	if _, err := os.Stat(filepath.Join(picoClawHome, "config.json")); !os.IsNotExist(err) {
+	if _, err := os.Stat(filepath.Join(ponyclawHome, "config.json")); !os.IsNotExist(err) {
 		t.Error("dry run should not create config")
 	}
 
@@ -631,7 +631,7 @@ func TestRunDryRun(t *testing.T) {
 
 func TestRunFullMigration(t *testing.T) {
 	openclawHome := t.TempDir()
-	picoClawHome := t.TempDir()
+	ponyclawHome := t.TempDir()
 
 	wsDir := filepath.Join(openclawHome, "workspace")
 	os.MkdirAll(wsDir, 0o755)
@@ -665,7 +665,7 @@ func TestRunFullMigration(t *testing.T) {
 	opts := Options{
 		Force:        true,
 		OpenClawHome: openclawHome,
-		PicoClawHome: picoClawHome,
+		PonyClawHome: ponyclawHome,
 	}
 
 	result, err := Run(opts)
@@ -673,7 +673,7 @@ func TestRunFullMigration(t *testing.T) {
 		t.Fatalf("Run: %v", err)
 	}
 
-	picoWs := filepath.Join(picoClawHome, "workspace")
+	picoWs := filepath.Join(ponyclawHome, "workspace")
 
 	soulData, err := os.ReadFile(filepath.Join(picoWs, "SOUL.md"))
 	if err != nil {
@@ -699,7 +699,7 @@ func TestRunFullMigration(t *testing.T) {
 		t.Errorf("MEMORY.md content = %q", string(memData))
 	}
 
-	picoConfig, err := config.LoadConfig(filepath.Join(picoClawHome, "config.json"))
+	picoConfig, err := config.LoadConfig(filepath.Join(ponyclawHome, "config.json"))
 	if err != nil {
 		t.Fatalf("loading PonyClaw config: %v", err)
 	}
@@ -730,7 +730,7 @@ func TestRunFullMigration(t *testing.T) {
 func TestRunOpenClawNotFound(t *testing.T) {
 	opts := Options{
 		OpenClawHome: "/nonexistent/path/to/openclaw",
-		PicoClawHome: t.TempDir(),
+		PonyClawHome: t.TempDir(),
 	}
 
 	_, err := Run(opts)
@@ -792,7 +792,7 @@ func TestCopyFile(t *testing.T) {
 
 func TestRunConfigOnly(t *testing.T) {
 	openclawHome := t.TempDir()
-	picoClawHome := t.TempDir()
+	ponyclawHome := t.TempDir()
 
 	wsDir := filepath.Join(openclawHome, "workspace")
 	os.MkdirAll(wsDir, 0o755)
@@ -812,7 +812,7 @@ func TestRunConfigOnly(t *testing.T) {
 		Force:        true,
 		ConfigOnly:   true,
 		OpenClawHome: openclawHome,
-		PicoClawHome: picoClawHome,
+		PonyClawHome: ponyclawHome,
 	}
 
 	result, err := Run(opts)
@@ -824,7 +824,7 @@ func TestRunConfigOnly(t *testing.T) {
 		t.Error("config should have been migrated")
 	}
 
-	picoWs := filepath.Join(picoClawHome, "workspace")
+	picoWs := filepath.Join(ponyclawHome, "workspace")
 	if _, err := os.Stat(filepath.Join(picoWs, "SOUL.md")); !os.IsNotExist(err) {
 		t.Error("config-only should not copy workspace files")
 	}
@@ -832,7 +832,7 @@ func TestRunConfigOnly(t *testing.T) {
 
 func TestRunWorkspaceOnly(t *testing.T) {
 	openclawHome := t.TempDir()
-	picoClawHome := t.TempDir()
+	ponyclawHome := t.TempDir()
 
 	wsDir := filepath.Join(openclawHome, "workspace")
 	os.MkdirAll(wsDir, 0o755)
@@ -852,7 +852,7 @@ func TestRunWorkspaceOnly(t *testing.T) {
 		Force:         true,
 		WorkspaceOnly: true,
 		OpenClawHome:  openclawHome,
-		PicoClawHome:  picoClawHome,
+		PonyClawHome:  ponyclawHome,
 	}
 
 	result, err := Run(opts)
@@ -864,7 +864,7 @@ func TestRunWorkspaceOnly(t *testing.T) {
 		t.Error("workspace-only should not migrate config")
 	}
 
-	picoWs := filepath.Join(picoClawHome, "workspace")
+	picoWs := filepath.Join(ponyclawHome, "workspace")
 	soulData, err := os.ReadFile(filepath.Join(picoWs, "SOUL.md"))
 	if err != nil {
 		t.Fatalf("reading SOUL.md: %v", err)

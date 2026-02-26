@@ -1,7 +1,7 @@
 .git
 .gitignore
 build/
-.picoclaw/
+.ponyclaw/
 config/
 .env
 .env.example

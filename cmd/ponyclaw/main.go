@@ -1,9 +1,9 @@
 // PonyClaw - Ultra-lightweight personal AI agent
-// Forked from PicoClaw: https://github.com/sipeed/picoclaw
+// Forked from PonyClaw: https://github.com/sipeed/ponyclaw
 // Originally inspired by nanobot: https://github.com/HKUDS/nanobot
 // License: MIT
 //
-// Copyright (c) 2026 PicoClaw contributors
+// Copyright (c) 2026 PonyClaw contributors
 // Copyright (c) 2026 vanyongqi
 
 package main

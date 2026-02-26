@@ -13,7 +13,7 @@ func TestNewMigrateCommand(t *testing.T) {
 	require.NotNil(t, cmd)
 
 	assert.Equal(t, "migrate", cmd.Use)
-	assert.Equal(t, "Migrate from OpenClaw to PicoClaw", cmd.Short)
+	assert.Equal(t, "Migrate from OpenClaw to PonyClaw", cmd.Short)
 
 	assert.Len(t, cmd.Aliases, 0)
 
@@ -34,5 +34,5 @@ func TestNewMigrateCommand(t *testing.T) {
 	assert.NotNil(t, cmd.Flags().Lookup("workspace-only"))
 	assert.NotNil(t, cmd.Flags().Lookup("force"))
 	assert.NotNil(t, cmd.Flags().Lookup("openclaw-home"))
-	assert.NotNil(t, cmd.Flags().Lookup("picoclaw-home"))
+	assert.NotNil(t, cmd.Flags().Lookup("ponyclaw-home"))
 }

@@ -1,11 +1,11 @@
-// PicoClaw - Ultra-lightweight personal AI agent
+// PonyClaw - Ultra-lightweight personal AI agent
 // License: MIT
 //
-// Copyright (c) 2026 PicoClaw contributors
+// Copyright (c) 2026 PonyClaw contributors
 
 package config
 
-// DefaultConfig returns the default configuration for PicoClaw.
+// DefaultConfig returns the default configuration for PonyClaw.
 func DefaultConfig() *Config {
 	return &Config{
 		Agents: AgentsConfig{

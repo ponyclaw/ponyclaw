@@ -22,10 +22,10 @@ SOFTWARE.
 
 ---
 
-PicoClaw is heavily inspired by and based on [nanobot](https://github.com/HKUDS/nanobot) by HKUDS.
+PonyClaw is heavily inspired by and based on [nanobot](https://github.com/HKUDS/nanobot) by HKUDS.
 
 ---
 
-This project (PonyClaw) is a fork of PicoClaw (https://github.com/sipeed/picoclaw)
-Original work Copyright (c) 2026 PicoClaw contributors
+This project (PonyClaw) is a fork of PonyClaw (https://github.com/sipeed/ponyclaw)
+Original work Copyright (c) 2026 PonyClaw contributors
 Modified work Copyright (c) 2026 vanyongqi

@@ -5,20 +5,20 @@ version: 2
 before:
   hooks:
     - go mod tidy
-    - go generate ./cmd/picoclaw/...
+    - go generate ./cmd/ponyclaw/...
 
 builds:
-  - id: picoclaw
+  - id: ponyclaw
     env:
       - CGO_ENABLED=0
     tags:
       - stdjson
     ldflags:
       - -s -w
-      - -X github.com/sipeed/picoclaw/cmd/picoclaw/internal.version={{ .Version }}
-      - -X github.com/sipeed/picoclaw/cmd/picoclaw/internal.gitCommit={{ .ShortCommit }}
-      - -X github.com/sipeed/picoclaw/cmd/picoclaw/internal.buildTime={{ .Date }}
-      - -X github.com/sipeed/picoclaw/cmd/picoclaw/internal.goVersion={{ .Env.GOVERSION }}
+      - -X github.com/sipeed/ponyclaw/cmd/ponyclaw/internal.version={{ .Version }}
+      - -X github.com/sipeed/ponyclaw/cmd/ponyclaw/internal.gitCommit={{ .ShortCommit }}
+      - -X github.com/sipeed/ponyclaw/cmd/ponyclaw/internal.buildTime={{ .Date }}
+      - -X github.com/sipeed/ponyclaw/cmd/ponyclaw/internal.goVersion={{ .Env.GOVERSION }}
     goos:
       - linux
       - windows
@@ -32,18 +32,18 @@ builds:
       - arm
     goarm:
       - "7"             
-    main: ./cmd/picoclaw
+    main: ./cmd/ponyclaw
     ignore:
       - goos: windows
         goarch: arm
 
 dockers_v2:
-  - id: picoclaw
+  - id: ponyclaw
     dockerfile: Dockerfile.goreleaser
     ids:
-      - picoclaw
+      - ponyclaw
     images:
-      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/picoclaw"
+      - "ghcr.io/{{ .Env.GITHUB_REPOSITORY_OWNER }}/ponyclaw"
       - "docker.io/{{ .Env.DOCKERHUB_IMAGE_NAME }}"
     tags:
       - "{{ .Tag }}"
@@ -69,18 +69,18 @@ archives:
         formats: [zip]
 
 nfpms:
-  - id: picoclaw
-    package_name: picoclaw
+  - id: ponyclaw
+    package_name: ponyclaw
     file_name_template: >-
       {{ .PackageName }}_
       {{- if eq .Arch "amd64" }}x86_64
       {{- else if eq .Arch "arm64" }}aarch64
       {{- else if eq .Arch "arm" }}armv{{ .Arm }}
       {{- else }}{{ .Arch }}{{ end }}
-    vendor: picoclaw
-    homepage: https://github.com/{{ .Env.GITHUB_REPOSITORY_OWNER }}/picoclaw
-    maintainer: picoclaw contributors
-    description: picoclaw - a tool for managing and running tasks
+    vendor: ponyclaw
+    homepage: https://github.com/{{ .Env.GITHUB_REPOSITORY_OWNER }}/ponyclaw
+    maintainer: ponyclaw contributors
+    description: ponyclaw - a tool for managing and running tasks
     license: MIT
     formats:
       - rpm

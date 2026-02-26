@@ -28,7 +28,7 @@ type Options struct {
 	Force         bool
 	Refresh       bool
 	OpenClawHome  string
-	PicoClawHome  string
+	PonyClawHome  string
 }
 
 type Action struct {
@@ -62,7 +62,7 @@ func Run(opts Options) (*Result, error) {
 		return nil, err
 	}
 
-	ponyClawHome, err := resolvePonyClawHome(opts.PicoClawHome)
+	ponyClawHome, err := resolvePonyClawHome(opts.PonyClawHome)
 	if err != nil {
 		return nil, err
 	}

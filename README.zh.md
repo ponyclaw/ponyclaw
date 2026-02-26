@@ -49,9 +49,9 @@ PonyClaw 是一个使用 Go 语言开发的轻量级个人 AI 助手，专注于
 <th><p align="center">🔎 网络搜索与学习</p></th>
 </tr>
 <tr>
-<td align="center"><p align="center"><img src="assets/picoclaw_code.gif" width="240" height="180"></p></td>
-<td align="center"><p align="center"><img src="assets/picoclaw_memory.gif" width="240" height="180"></p></td>
-<td align="center"><p align="center"><img src="assets/picoclaw_search.gif" width="240" height="180"></p></td>
+<td align="center"><p align="center"><img src="assets/ponyclaw_code.gif" width="240" height="180"></p></td>
+<td align="center"><p align="center"><img src="assets/ponyclaw_memory.gif" width="240" height="180"></p></td>
+<td align="center"><p align="center"><img src="assets/ponyclaw_search.gif" width="240" height="180"></p></td>
 </tr>
 <tr>
 <td align="center">开发 • 部署 • 扩展</td>

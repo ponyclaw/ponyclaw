@@ -11,14 +11,14 @@ import (
 	"github.com/lansely/ponyclaw/cmd/ponyclaw/internal"
 )
 
-func TestNewPicoclawCommand(t *testing.T) {
-	cmd := NewPicoclawCommand()
+func TestNewPonyClawCommand(t *testing.T) {
+	cmd := NewPonyClawCommand()
 
 	require.NotNil(t, cmd)
 
-	short := fmt.Sprintf("%s picoclaw - Personal AI Assistant v%s\n\n", internal.Logo, internal.GetVersion())
+	short := fmt.Sprintf("%s ponyclaw - Personal AI Assistant v%s\n\n", internal.Logo, internal.GetVersion())
 
-	assert.Equal(t, "picoclaw", cmd.Use)
+	assert.Equal(t, "ponyclaw", cmd.Use)
 	assert.Equal(t, short, cmd.Short)
 
 	assert.True(t, cmd.HasSubCommands())

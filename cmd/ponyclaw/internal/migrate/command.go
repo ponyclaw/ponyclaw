@@ -11,12 +11,12 @@ func NewMigrateCommand() *cobra.Command {
 
 	cmd := &cobra.Command{
 		Use:   "migrate",
-		Short: "Migrate from OpenClaw to PicoClaw",
+		Short: "Migrate from OpenClaw to PonyClaw",
 		Args:  cobra.NoArgs,
-		Example: `  picoclaw migrate
-  picoclaw migrate --dry-run
-  picoclaw migrate --refresh
-  picoclaw migrate --force`,
+		Example: `  ponyclaw migrate
+  ponyclaw migrate --dry-run
+  ponyclaw migrate --refresh
+  ponyclaw migrate --force`,
 		RunE: func(cmd *cobra.Command, _ []string) error {
 			result, err := migrate.Run(opts)
 			if err != nil {
@@ -41,7 +41,7 @@ func NewMigrateCommand() *cobra.Command {
 		"Skip confirmation prompts")
 	cmd.Flags().StringVar(&opts.OpenClawHome, "openclaw-home", "",
 		"Override OpenClaw home directory (default: ~/.openclaw)")
-	cmd.Flags().StringVar(&opts.PicoClawHome, "ponyclaw-home", "",
+	cmd.Flags().StringVar(&opts.PonyClawHome, "ponyclaw-home", "",
 		"Override PonyClaw home directory (default: ~/.ponyclaw)")
 
 	return cmd
