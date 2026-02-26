@@ -189,14 +189,6 @@ PonyClaw provides a comprehensive set of tools for the AI agent:
   - Automatic dependency resolution
   - Skill validation
 
-### Hardware Integration (Linux)
-- **i2c**: I2C device communication
-  - Read/write operations
-  - Device scanning
-- **spi**: SPI device communication
-  - Data transfer
-  - Device control
-
 ### Tool Features
 - **Async Execution**: Non-blocking tool calls
 - **Error Handling**: Graceful error recovery
