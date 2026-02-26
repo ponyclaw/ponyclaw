@@ -44,11 +44,11 @@ Ultra-lightweight personal AI assistant written in Go, inspired by nanobot.
 MIT License - Free and open source
 
 ## Repository
-https://github.com/sipeed/ponyclaw
+https://github.com/ponyclaw/ponyclaw
 
 ## Contact
-Issues: https://github.com/sipeed/ponyclaw/issues
-Discussions: https://github.com/sipeed/ponyclaw/discussions
+Issues: https://github.com/ponyclaw/ponyclaw/issues
+Discussions: https://github.com/ponyclaw/ponyclaw/discussions
 
 ---
 
